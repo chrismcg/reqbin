@@ -31,6 +31,7 @@ defmodule ReqBinWeb.ReqLive do
           </div>
         </div>
       </div>
+      <hr/>
     <% end %>
     """
   end

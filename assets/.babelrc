@@ -6,7 +6,7 @@
         ["prismjs", {
             "languages": ["json"],
             "plugins": ["line-numbers", "match-braces"],
-            "theme": "coy",
+            "theme": "twilight",
             "css": true
         }]
     ]

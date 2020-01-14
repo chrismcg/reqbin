@@ -1,4 +1,8 @@
 /* This file is for your main application css. */
 
-@import "~mini.css/dist/mini-default.css";
+@import "~mini.css/dist/mini-dark.css";
 
+.card {
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+}
