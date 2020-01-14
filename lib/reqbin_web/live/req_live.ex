@@ -4,21 +4,33 @@ defmodule ReqBinWeb.ReqLive do
   def render(assigns) do
     ~L"""
     <%= for req <- assigns.reqs do %>
-      <div>
-        <h2><%= req.timestamp %></h2>
-        <table>
-          <%= for {name, content} <- req.headers do %>
-            <tr>
-              <th><%= name %></th>
-              <td><%= content %></td>
-            </tr>
-          <% end %>
-        </table>
-        <pre>
-          <code><%= Jason.encode!(req.content, pretty: true) %></code>
-         </pre>
+      <% id = DateTime.to_unix(req.timestamp, :microsecond) %>
+      <div class="card fluid bordered rounded">
+        <h2 class="section dark"><%= req.timestamp %></h2>
+        <div class="section">
+          <pre class="line-numbers" phx-hook="Highlight"><code class="language-json match-braces rainbow-braces"><%= Jason.encode!(req.content, pretty: true) %></code></pre>
+          <div class="collapse">
+            <input type="checkbox" id="collapse-section<%= id %>" aria-hidden="true">
+            <label for="collapse-section<%= id %>">Click for headers</label>
+            <div>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <%= for {name, content} <- req.headers do %>
+                  <tr>
+                    <td data-label="Name"><%= name %></th>
+                    <td data-label="Value"><%= content %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-      <hr />
     <% end %>
     """
   end

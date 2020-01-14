@@ -13,7 +13,16 @@ import "phoenix_html"
 import { Socket } from "phoenix"
 import LiveSocket from "phoenix_live_view"
 
-let liveSocket = new LiveSocket("/live", Socket)
+import Prism from "prismjs"
+
+let Hooks = {}
+Hooks.Highlight = {
+    mounted() {
+        Prism.highlightAll()
+    }
+}
+
+let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks})
 liveSocket.connect()
 
 // Import local files

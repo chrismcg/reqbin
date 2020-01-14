@@ -1,5 +1,13 @@
 {
     "presets": [
         "@babel/preset-env"
+    ],
+    "plugins": [
+        ["prismjs", {
+            "languages": ["json"],
+            "plugins": ["line-numbers", "match-braces"],
+            "theme": "coy",
+            "css": true
+        }]
     ]
 }

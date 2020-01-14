@@ -6,7 +6,7 @@ defmodule ReqBin.Req do
 
   def new(headers, content) do
     {:ok, %Req{
-      timestamp: NaiveDateTime.utc_now,
+      timestamp: DateTime.utc_now,
       headers: headers,
       content: content
     }}
