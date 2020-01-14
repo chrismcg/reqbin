@@ -16,7 +16,8 @@ config :reqbin, ReqBinWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "a3WOv25AdZ/urWiI6ymMRWWYljoKWxaZzX+57E3vSOUjqm0f1tillTgv8uPYvxg8",
   render_errors: [view: ReqBinWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ReqBin.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: ReqBin.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "oJI1dh6eH2CMxh8Y4WEHJHhhMI3fZR+1"]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -25,6 +26,7 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

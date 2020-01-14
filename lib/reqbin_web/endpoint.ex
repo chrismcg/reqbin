@@ -1,6 +1,8 @@
 defmodule ReqBinWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :reqbin
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", ReqBinWeb.UserSocket,
     websocket: true,
     longpoll: false
