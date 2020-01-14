@@ -6,6 +6,7 @@ defmodule ReqBin.Application do
   use Application
 
   def start(_type, _args) do
+    :ets.new(:req_store, [:ordered_set, :public, :named_table])
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository

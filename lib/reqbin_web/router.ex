@@ -19,6 +19,12 @@ defmodule ReqBinWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/req", ReqBinWeb do
+    pipe_through :api
+
+    post "/", ReqController, :create
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", ReqBinWeb do
   #   pipe_through :api
