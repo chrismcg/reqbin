@@ -5,7 +5,7 @@ defmodule ReqBinWeb.ReqLive do
     ~L"""
     <%= for req <- assigns.reqs do %>
       <% id = DateTime.to_unix(req.timestamp, :microsecond) %>
-      <div class="card fluid bordered rounded">
+      <div id="req-<%= id %>" class="card fluid bordered rounded">
         <h2 class="section dark"><%= req.timestamp %></h2>
         <div class="section">
           <pre class="line-numbers" phx-hook="Highlight"><code class="language-json match-braces rainbow-braces"><%= Jason.encode!(req.content, pretty: true) %></code></pre>
@@ -46,11 +46,16 @@ defmodule ReqBinWeb.ReqLive do
       :ets.tab2list(:req_store)
       |> Enum.map(fn {_, req} -> req end)
       |> Enum.reverse()
+      |> Enum.take(20)
 
     {:ok, assign(socket, reqs: reqs)}
   end
 
   def handle_info(req, socket) do
-    {:noreply, update(socket, :reqs, fn reqs -> [req | reqs] end)}
+    {:noreply,
+     update(socket, :reqs, fn
+       reqs when length(reqs) < 20 -> [req | reqs]
+       reqs -> [req | List.delete_at(reqs, -1)]
+     end)}
   end
 end
