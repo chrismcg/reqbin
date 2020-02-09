@@ -8,7 +8,7 @@ defmodule ReqBinWeb.ReqLive do
       <div id="req-<%= id %>" class="card fluid bordered rounded">
         <h2 class="section dark"><%= req.timestamp %></h2>
         <div class="section">
-          <pre class="line-numbers" phx-hook="Highlight"><code class="language-json match-braces rainbow-braces"><%= Jason.encode!(req.content, pretty: true) %></code></pre>
+          <pre class="line-numbers"><code class="language-json match-braces rainbow-braces" phx-hook="Highlight"><%= Jason.encode!(req.content, pretty: true) %></code></pre>
           <div class="collapse">
             <input type="checkbox" id="collapse-section<%= id %>" aria-hidden="true">
             <label for="collapse-section<%= id %>">Click for headers</label>
@@ -36,7 +36,7 @@ defmodule ReqBinWeb.ReqLive do
     """
   end
 
-  def mount(_params, socket) do
+  def mount(_params, _session, socket) do
     if connected?(socket) do
       IO.puts("Setting up subscription")
       Phoenix.PubSub.subscribe(ReqBin.PubSub, "req:new")

@@ -33,7 +33,7 @@ defmodule ReqBin.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.11"},
+      {:phoenix, "~> 1.4.12"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
@@ -43,7 +43,7 @@ defmodule ReqBin.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.5.2"},
+      {:phoenix_live_view, "~> 0.6"},
       {:floki, ">= 0.0.0", only: :test}
     ]
   end

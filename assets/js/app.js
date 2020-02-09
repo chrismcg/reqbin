@@ -18,7 +18,12 @@ import Prism from "prismjs"
 let Hooks = {}
 Hooks.Highlight = {
     mounted() {
-        Prism.highlightAll()
+        console.log("calling mounted", this.el)
+        Prism.highlightElement(this.el)
+    },
+    updated() {
+        console.log("calling updated", this.el)
+        Prism.highlightElement(this.el)
     }
 }
 
