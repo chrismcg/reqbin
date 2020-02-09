@@ -5,10 +5,11 @@ defmodule ReqBin.Req do
   defstruct [:timestamp, :headers, :content]
 
   def new(headers, content) do
-    {:ok, %Req{
-      timestamp: DateTime.utc_now,
-      headers: headers,
-      content: content
-    }}
+    {:ok,
+     %Req{
+       timestamp: DateTime.utc_now(),
+       headers: headers,
+       content: content
+     }}
   end
 end
